@@ -1,24 +1,38 @@
-#1.1 Implement o recursive function to calculate the factorial of a given number
-"""
-1!=1×1
-2!=2 x 1! ---> 2 x 1 
-3!= 3 ×2! --->3 x 1
-.
-.
-10!=10 x 9! ---> 10 x 9 x... x 1
+class BankAccount:
 
-Formula - n ×(n-1)!
-"""
+  def __init__(self, account_number, account_holder_name, initial_balance=0.0):
+    self.__account_number = account_number
+    self.__account_holder_name = account_holder_name
+    self.__account_balance = initial_balance
+
+  def deposit(self, amount):
+    if amount > 0:
+      self.__account_balance += amount
+      print("\nDeposited â‚¹{}.new balance:â‚¹{}".format(
+          amount, self.__account_balance))
+    else:
+      print("\nInvalid deposit amount.plaese deposit a positive amount.")
+
+  def withdraw(self, amount):
+    if amount > 0 and amount <= self.__account_balance:
+      self.__account_balance -= amount
+      print("\nwithdraw â‚¹{}.New balance:â‚¹{}".format(
+          amount, self.__account_balance))
+    else:
+      print("\nInvalid withdrawal amount or insufficient balance.")
+
+  def display_balance(self):
+    print("\nAccount balance for {}(Account #{}):â‚¹{}".format(
+        self.__account_holder_name, self.__account_number,
+        self.__account_balance))
 
 
-def fact_rec(n):
-  if n == 0 or n == 1:
-    return 1
-  else:
-    return n * fact_rec(n - 1)
+account = BankAccount(account_number="123456789",
+                      account_holder_name="Hari prabu",
+                      initial_balance=5000.0)
 
-
-number = int(input("Enter a value :"))
-res = fact_rec(number)
-
-print("The factorial of {} is{}.".format(number, res)) 
+account.display_balance()
+account.deposit(500.0)
+account.withdraw(200.0)
+account.withdraw(20000.0)
+account.display_balance()
