@@ -1,23 +1,22 @@
-class player:
+# Leap year
+"""
+year % 4==0  &
+year% 100 != 0 /
+year %400 == 0
 
-  def play(self):
-    print("The player is playing cricket.")
-
-
-class Batsman(player):
-
-  def play(self):
-    print("The batsman is bating.")
+"""
 
 
-class Bowler(player):
+def tsLeapYear(year):
+  if (year % 4 == 0 and year % 100 != 0) or year % 400 == 0:
+    return True
+  else:
+    return False
 
-  def play(self):
-    print("The bowler is bowling.")
 
+year = int(input("Enter a year :"))
 
-batsman = Batsman()
-bowler = Bowler()
-
-batsman.play()
-bowler.play()
+if tsLeapYear(year):
+  print('{}is a leap year.'.format(year))
+else:
+  print('{} is not a leap year.'.format(year))
